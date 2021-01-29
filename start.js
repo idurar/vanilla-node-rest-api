@@ -8,13 +8,13 @@ const {
 } = require("./controllers/feedbackController");
 
 const server = http.createServer((req, res) => {
-  if (req.url === "/api/feedbacks" && req.method === "GET") {
+  if (req.url === "/api/feedback/list" && req.method === "GET") {
     getfeedbacks(req, res);
   } else if (
-    req.url.match(/\/api\/newfeedback\/([0-9]+)/) &&
+    req.url.match(/\/api\/feedback\/create\/([0-9]+)/) &&
     req.method === "GET"
   ) {
-    const note = req.url.split("/")[3];
+    const note = req.url.split("/")[4];
     createfeedback(req, res, note);
   } else if (req.url === "/api/feedbacks" && req.method === "POST") {
     createfeedback(req, res);
